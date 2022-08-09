@@ -4,7 +4,9 @@
   padding: 0;
   margin: 0;
 }
-
+:root{
+    --primary-color:rgb(38 120 216);
+}
 body{
   color: white;
   overflow: hidden;
@@ -12,8 +14,8 @@ body{
 }
 
 .upper-container{
-  height: 40vh;
-  background-color: rgb(255, 0, 0);
+  height: 75vh;
+  background-color: var(--primary-color);
 }
 
 .lower-container{
@@ -25,7 +27,7 @@ body{
 
 #form{
   width: 600px;
-  height: 40vh;
+  height: 75vh;
   margin: auto;
   display: flex;
   justify-content: flex-end;
@@ -65,8 +67,8 @@ body{
 
 #form button:hover{
   color:white;
-  background-color:  red;
-  border: 1px solid  red;
+  background-color:  var(--primary-color);
+  border: 1px solid  var(--primary-color);
   transform: scale(1.1);
 }
 
@@ -99,7 +101,7 @@ body{
   color: black;
   padding: 12px;
   color: white;
-  background-color: red;
+  background-color: var(--primary-color);
   border-radius: 5px;
   text-decoration: none;
   box-shadow: 2px 2px 5px gray;
@@ -107,7 +109,7 @@ body{
   cursor: pointer;
   letter-spacing: 1px;
   font-family: inherit;
-  border: 1px solid red;
+  border: 1px solid var(--primary-color);
   transition: 0.3s ease-out;
 }
 
@@ -134,4 +136,12 @@ body{
   #form input{
     width: 50%;
   }
+}
+iframe{
+    position: absolute;
+    top:5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 50%;
 }

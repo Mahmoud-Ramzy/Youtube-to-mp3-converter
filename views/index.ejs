@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="upper-container">
-      <form action="localhost:3000/convert-mp3" method="POST" id="form">
+      <form action="/convert-mp3" method="POST" id="form">
         <h1>Youtube to mp3 converter</h1>
         <h4>Enter the video ID</h4>
         <div class="inp">
@@ -21,8 +21,14 @@
 
     <div class="lower-container">
       <% if(typeof success !="undefined" && success){ %>
+      <iframe
+        src="<%= video_Link%>"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
       <div class="success">
-        <p><%= song-title %></p>
+        <p><%= song_title %></p>
         <a href="<%= song_link%>"
           ><button id="download-btn">Download</button>
         </a>

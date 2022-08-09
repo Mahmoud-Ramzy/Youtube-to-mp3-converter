@@ -13,12 +13,6 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Cors for cross origin allowance
-
-const cors =require("cors");
-app.use(cors());
-
-
 //set template engine
 app.set("view engine","ejs");
 app.use(express.static("project"));
@@ -35,21 +29,24 @@ app.post("/convert-mp3",async (req,res)=>{
     }
     else{//to get api : https://rapidapi.com/
         
-        const fetchAPI= await fetch(`youtube-mp36.p.rapidapi.com/dl?id=${vidID}`, {
+        const fetchAPI= await fetch(`https://youtube-mp36.p.rapidapi.com/dl?id=${vidID}`, {
             "method": 'GET',
             "headers" : {
                 "x-rapidapi-key": process.env.API_Key,
                 "x-rapidapi-host": process.env.API_Host
             }});
             
-        // const Response= await fetchAPI.json();
-        // console.log(Response);
-        /*
-        if(Response.status==="ok")
-            return res.render("index", {success: true, song_title: Response.title, song_link: Response.link});
+        const Response= await fetchAPI.json();
+        console.log(Response);
+        
+        if(Response.status==="ok"){
+            let Linke=`https://www.youtube.com/embed/${vidID}`
+            console.log(Linke);
+            return res.render("index", { video_Link : Linke, success : true, song_title: Response.title, song_link: Response.link});
+        }
         else
-            return res.render("index", {success: false, message:Response.msg});
-        */
+            return res.render("index", {success : false, message:Response.msg});
+        
         }
 })
 
